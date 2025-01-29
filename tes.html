@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love 💗</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: black;
+            color: white;
+            overflow: hidden;
+        }
+        .dark-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            animation: fadeOut 3s ease-in-out forwards;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; display: none; }
+        }
+        .love-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: animate__heartBeat 2s infinite;
+        }
+        .love-animation img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+        .photo-stack {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        .photo-stack img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            position: absolute;
+            animation: movePhoto 5s infinite alternate;
+        }
+        @keyframes movePhoto {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        .message-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .typing-text {
+            display: inline-block;
+            font-size: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .romantic-gif {
+            width: 150px;
+            height: auto;
+            margin-top: 20px;
+        }
+        .closing-video {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            justify-content: center;
+            align-items: center;
+        }
+        .closing-video video {
+            width: 80%;
+            max-width: 800px;
+            autoplay: true;
+        }
+    </style>
+</head>
+<body>
+    <div class="dark-screen"></div>
+    <div class="love-animation animate__animated animate__heartBeat">
+        <img src="pertama.jpg" alt="Foto Spesial"> <!-- Ganti 'your-photo.jpg' dengan foto dari komputer Anda -->
+    </div>
+    <div class="photo-stack">
+        <!-- Foto berpindah-pindah -->
+        <script>
+            let photos = ["pertama.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg"];
+            photos.forEach(photo => {
+                let img = document.createElement("img");
+                img.src = photo;
+                img.style.top = Math.random() * 80 + "vh";
+                img.style.left = Math.random() * 80 + "vw";
+                document.querySelector(".photo-stack").appendChild(img);
+            });
+        </script>
+        <button class="btn" onclick="showMessage()">Tekan Tombol Ini</button>
+    </div>
+    <div class="message-container">
+        <p class="sayangku terimakasih banyak selalu ada dan mau bertahan sampai saat ini"> <!-- Ketik ucapan Anda di sini --> </p>
+        <img class="romantic-gif" src="https://media.giphy.com/media/l0HlJ3X84cWZlJf6Y/giphy.gif" alt="Romantic GIF">
+    </div>
+    <div class="closing-video">
+        <video controls>
+            <source src="tutup.mp4" type="video/mp4"> <!-- Ganti 'your-video.mp4' dengan video dari komputer Anda -->
+        </video>
+    </div>
+    <script>
+        function showMessage() {
+            document.querySelector('.photo-stack').style.display = 'none';
+            $('.message-container').fadeIn(2000);
+            let text = "Selamat ulang tahun sayang! Aku sangat mencintaimu..."; // Ganti dengan kata-kata Anda
+            let index = 0;
+            function typeWriter() {
+                if (index < text.length) {
+                    document.querySelector('.typing-text').textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    setTimeout(() => {
+                        $('.message-container').fadeOut(2000);
+                        $('.closing-video').fadeIn(2000);
+                    }, 3000);
+                }
+            }
+            typeWriter();
+        }
+    </script>
+</body>
+</html>
